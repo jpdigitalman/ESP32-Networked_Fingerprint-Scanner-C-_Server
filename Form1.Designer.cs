@@ -28,132 +28,173 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.webView = new Microsoft.Web.WebView2.WinForms.WebView2();
-            this.comboBoxIPAddresses = new System.Windows.Forms.ComboBox();
-            this.richTextBoxConsole = new System.Windows.Forms.RichTextBox();
-            this.addressBar = new System.Windows.Forms.TextBox();
-            this.goButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.webView)).BeginInit();
-            this.SuspendLayout();
+            textBoxDatabaseCounter = new TextBox();
+            webView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            richTextBoxConsole = new RichTextBox();
+            addressBar = new TextBox();
+            goButton = new Button();
+            panel1 = new Panel();
+            label3 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            comboBoxIPAddresses = new ComboBox();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)webView).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
-            // dataGridView1
+            // textBoxDatabaseCounter
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 133);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(252, 305);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(361, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(217, 23);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(55, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "List of Connected Scanners";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Select Server IP Address";
+            textBoxDatabaseCounter.Location = new Point(399, 17);
+            textBoxDatabaseCounter.Margin = new Padding(4, 5, 4, 5);
+            textBoxDatabaseCounter.Name = "textBoxDatabaseCounter";
+            textBoxDatabaseCounter.ReadOnly = true;
+            textBoxDatabaseCounter.Size = new Size(308, 31);
+            textBoxDatabaseCounter.TabIndex = 1;
             // 
             // webView
             // 
-            this.webView.AllowExternalDrop = true;
-            this.webView.CreationProperties = null;
-            this.webView.DefaultBackgroundColor = System.Drawing.Color.White;
-            this.webView.Location = new System.Drawing.Point(361, 133);
-            this.webView.Name = "webView";
-            this.webView.Size = new System.Drawing.Size(492, 305);
-            this.webView.Source = new System.Uri("https://www.microsoft.com", System.UriKind.Absolute);
-            this.webView.TabIndex = 4;
-            this.webView.ZoomFactor = 1D;
-            // 
-            // comboBoxIPAddresses
-            // 
-            this.comboBoxIPAddresses.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxIPAddresses.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBoxIPAddresses.FormattingEnabled = true;
-            this.comboBoxIPAddresses.Location = new System.Drawing.Point(55, 75);
-            this.comboBoxIPAddresses.Name = "comboBoxIPAddresses";
-            this.comboBoxIPAddresses.Size = new System.Drawing.Size(252, 23);
-            this.comboBoxIPAddresses.TabIndex = 5;
+            webView.AllowExternalDrop = true;
+            webView.CreationProperties = null;
+            webView.DefaultBackgroundColor = Color.White;
+            webView.Location = new Point(9, 113);
+            webView.Margin = new Padding(4, 5, 4, 5);
+            webView.Name = "webView";
+            webView.Size = new Size(703, 508);
+            webView.Source = new Uri("https://www.microsoft.com", UriKind.Absolute);
+            webView.TabIndex = 4;
+            webView.ZoomFactor = 1D;
+            webView.NavigationStarting += webView_NavigationStarting;
+            webView.NavigationCompleted += webView_NavigationCompleted;
+            webView.WebMessageReceived += webView_WebMessageReceived;
             // 
             // richTextBoxConsole
             // 
-            this.richTextBoxConsole.Location = new System.Drawing.Point(55, 449);
-            this.richTextBoxConsole.Name = "richTextBoxConsole";
-            this.richTextBoxConsole.Size = new System.Drawing.Size(798, 122);
-            this.richTextBoxConsole.TabIndex = 6;
-            this.richTextBoxConsole.Text = "";
+            richTextBoxConsole.Location = new Point(17, 683);
+            richTextBoxConsole.Margin = new Padding(4, 5, 4, 5);
+            richTextBoxConsole.Name = "richTextBoxConsole";
+            richTextBoxConsole.Size = new Size(1084, 251);
+            richTextBoxConsole.TabIndex = 6;
+            richTextBoxConsole.Text = "";
             // 
             // addressBar
             // 
-            this.addressBar.Location = new System.Drawing.Point(361, 105);
-            this.addressBar.Name = "addressBar";
-            this.addressBar.Size = new System.Drawing.Size(411, 23);
-            this.addressBar.TabIndex = 7;
+            addressBar.Location = new Point(9, 67);
+            addressBar.Margin = new Padding(4, 5, 4, 5);
+            addressBar.Name = "addressBar";
+            addressBar.Size = new Size(585, 31);
+            addressBar.TabIndex = 7;
+            addressBar.KeyDown += addressBar_KeyDown;
             // 
             // goButton
             // 
-            this.goButton.Location = new System.Drawing.Point(778, 105);
-            this.goButton.Name = "goButton";
-            this.goButton.Size = new System.Drawing.Size(75, 23);
-            this.goButton.TabIndex = 8;
-            this.goButton.Text = "Go";
-            this.goButton.UseVisualStyleBackColor = true;
-            this.goButton.Click += new System.EventHandler(this.goButton_Click);
+            goButton.DialogResult = DialogResult.OK;
+            goButton.Location = new Point(604, 67);
+            goButton.Margin = new Padding(4, 5, 4, 5);
+            goButton.Name = "goButton";
+            goButton.Size = new Size(107, 38);
+            goButton.TabIndex = 8;
+            goButton.Text = "Go";
+            goButton.UseVisualStyleBackColor = true;
+            goButton.Click += goButton_Click;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(goButton);
+            panel1.Controls.Add(addressBar);
+            panel1.Controls.Add(webView);
+            panel1.Controls.Add(textBoxDatabaseCounter);
+            panel1.Location = new Point(391, 52);
+            panel1.Margin = new Padding(4, 5, 4, 5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(723, 627);
+            panel1.TabIndex = 9;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 30);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(163, 25);
+            label3.TabIndex = 9;
+            label3.Text = "Enter Web Address";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(17, 115);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(232, 40);
+            label1.TabIndex = 2;
+            label1.Text = "List of Scanners";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(24, 42);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(202, 25);
+            label2.TabIndex = 3;
+            label2.Text = "Select Server IP Address";
+            // 
+            // comboBoxIPAddresses
+            // 
+            comboBoxIPAddresses.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxIPAddresses.FlatStyle = FlatStyle.Popup;
+            comboBoxIPAddresses.FormattingEnabled = true;
+            comboBoxIPAddresses.Location = new Point(24, 72);
+            comboBoxIPAddresses.Margin = new Padding(4, 5, 4, 5);
+            comboBoxIPAddresses.Name = "comboBoxIPAddresses";
+            comboBoxIPAddresses.Size = new Size(358, 33);
+            comboBoxIPAddresses.TabIndex = 5;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(24, 168);
+            dataGridView1.Margin = new Padding(4, 5, 4, 5);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(359, 503);
+            dataGridView1.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(865, 574);
-            this.Controls.Add(this.goButton);
-            this.Controls.Add(this.addressBar);
-            this.Controls.Add(this.richTextBoxConsole);
-            this.Controls.Add(this.comboBoxIPAddresses);
-            this.Controls.Add(this.webView);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
-            this.Text = "C-Ray Foundation Fingerprint Network Controller V0.1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.webView)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1130, 948);
+            Controls.Add(dataGridView1);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(comboBoxIPAddresses);
+            Controls.Add(panel1);
+            Controls.Add(richTextBoxConsole);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "Form1";
+            Text = "C-Ray Foundation Fingerprint Network Controller V0.1 by John-Paul Madueke (Digitalman)";
+            FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)webView).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView;
         private DataGridView dataGridView1;
-        private TextBox textBox1;
+        private TextBox textBoxDatabaseCounter;
         private Label label1;
         private Label label2;
         private Microsoft.Web.WebView2.WinForms.WebView2 webView;
@@ -161,5 +202,7 @@
         private RichTextBox richTextBoxConsole;
         private TextBox addressBar;
         private Button goButton;
+        private Panel panel1;
+        private Label label3;
     }
 }

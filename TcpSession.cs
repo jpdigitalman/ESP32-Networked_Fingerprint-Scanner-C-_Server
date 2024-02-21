@@ -23,6 +23,7 @@ namespace C_RayFingerNetwork
             OptionSendBufferSize = server.OptionSendBufferSize;
         }
 
+        public bool start_template_rx { get; set; }
         /// <summary>
         /// Session Id
         /// </summary>
@@ -61,7 +62,7 @@ namespace C_RayFingerNetwork
         /// <summary>
         /// Option: receive buffer size
         /// </summary>
-        public int OptionReceiveBufferSize { get; set; } = 8192;
+        public int OptionReceiveBufferSize { get; set; } = 135000;//8192;
         /// <summary>
         /// Option: send buffer limit
         /// </summary>
@@ -69,7 +70,7 @@ namespace C_RayFingerNetwork
         /// <summary>
         /// Option: send buffer size
         /// </summary>
-        public int OptionSendBufferSize { get; set; } = 8192;
+        public int OptionSendBufferSize { get; set; } = 16000000;//8192;
 
         #region Connect/Disconnect session
 
@@ -279,7 +280,8 @@ namespace C_RayFingerNetwork
                 SendError(ec);
                 Disconnect();
             }
-
+            //ClearBuffers();
+            //Console.WriteLine("sent?");
             return sent;
         }
 
@@ -708,6 +710,13 @@ namespace C_RayFingerNetwork
         /// Notification is called when another chunk of buffer was sent to the client.
         /// This handler could be used to send another buffer to the client for instance when the pending size is zero.
         /// </remarks>
+
+        ///
+
+        protected virtual void DecodeCommand(string message, int size) { }
+        protected virtual void RxTemplate(byte[] buffer, int size) { }
+
+
         protected virtual void OnSent(long sent, long pending) { }
 
         /// <summary>

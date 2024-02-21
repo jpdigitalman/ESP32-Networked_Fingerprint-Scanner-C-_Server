@@ -32,11 +32,12 @@ namespace C_RayFingerNetwork
                 }
             }
         }
-        public void SaveDB(SubjectProbe subject)
+        public int SaveDB(SubjectProbe subject)
         {
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
+                int rowCount = -1;
 
                 using (var transaction = connection.BeginTransaction())
                 {
@@ -44,22 +45,26 @@ namespace C_RayFingerNetwork
                     {
                         using (var command = new SQLiteCommand("INSERT INTO Subjects (Name, Template) VALUES (@Name, @Template)", connection))
                         {
-                            command.Parameters.AddWithValue("@Id", subject.Id);
+                            // Remove the @Id parameter if "Id" is auto-incremented in the database
+                            // command.Parameters.AddWithValue("@Id", subject.Id);
+
                             command.Parameters.AddWithValue("@Name", subject.Name);
                             // Convert the FingerprintTemplate to a string representation for storage in the database.
-                            command.Parameters.AddWithValue("@Template", Convert.ToBase64String(subject.serializedFingerTemplate));
+                            command.Parameters.AddWithValue("@Template", subject.serializedFingerTemplate);
 
-                            command.ExecuteNonQuery();
+                            rowCount = command.ExecuteNonQuery();
                         }
 
                         transaction.Commit();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         transaction.Rollback();
-                        throw;
+                        Console.WriteLine($"Error saving to the database: {ex.Message}");
                     }
                 }
+
+                return rowCount;
             }
         }
         public List<Subject> LoadDB()
@@ -77,10 +82,19 @@ namespace C_RayFingerNetwork
                         int id = reader.GetInt32(0);
                         string name = reader.GetString(1);
                         //Console.WriteLine("name: " + name);
-                        byte[] templateAsBytes = Convert.FromBase64String((string)reader["Template"]); // Read the template as a byte array
+                        //byte[] templateAsBytes = (byte[])reader["Template"]; //Convert.FromBase64String((string)reader["Template"]); // Read the template as a byte array
+                        byte[] templateAsBytes = null;
 
-                        // Deserialize the byte array back into a FingerprintTemplate
-                        //FingerprintTemplate template = DeserializeFingerprintTemplate(templateAsBytes);
+                        // Explicitly retrieve data as stream using GetStream
+                        using (var stream = reader.GetStream(reader.GetOrdinal("Template")))
+                        {
+                            if (stream != null && stream.Length > 0)
+                            {
+                                templateAsBytes = new byte[stream.Length];
+                                stream.Read(templateAsBytes, 0, templateAsBytes.Length);
+                            }
+                        }
+
                         var newSubject = new Subject(id, name, templateAsBytes);
                         subjects.Add(newSubject);
                     }
@@ -89,13 +103,22 @@ namespace C_RayFingerNetwork
 
             return subjects;
         }
-        private void DeserializeFingerprintTemplate(byte[] templateAsBytes)
-        {
-            // implementation to deserialize the byte array into a FingerprintTemplate goes here.
-            // https://sourceafis.machinezoo.com/net
 
-            //var template = new FingerprintTemplate(templateAsBytes);
-            //return template;
+        public int GetNumberOfItems()
+        {
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                // Count the number of rows in the table
+                using (SQLiteCommand countCommand = new SQLiteCommand("SELECT COUNT(*) FROM Subjects", connection))
+                {
+                    // ExecuteScalar is used to retrieve a single value (in this case, the count)
+                    int rowCount = Convert.ToInt32(countCommand.ExecuteScalar());
+
+                    //Console.WriteLine($"Number of rows in the table: {rowCount}");
+                    return rowCount;
+                }                
+            }            
         }
     }
 }
