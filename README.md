@@ -1,8 +1,12 @@
 # C_RayFingerNetwork
 
-# Networked Fingerprint Scanner with Arduino for 
+# Networked Fingerprint Scanner with Arduino for AS608 and FPM10A fingerprint sensors.
 
-The Networked Fingerprint Scanner offers a comprehensive solution for efficient fingerprint enrollment and verification, eliminating the hassle of duplicate fingerprint entries and enabling seamless integration and verification across multiple devices. This innovative system supports a range of fingerprint sensors, including AS608 and FPM10A, providing extensive compatibility over network connections.
+The Networked Fingerprint Scanner offers a comprehensive solution for efficient fingerprint enrollment and verification, eliminating the hassle of duplicate fingerprint entries and enabling seamless integration and verification across multiple fingerprint scanner devices. This innovative system supports a range of fingerprint sensors, including AS608 and FPM10A, providing extensive compatibility over network connections.
+Our solution has been meticulously tested and proven effective with supported sensors such as AS608 and FPM10A. It should be noted that, following extensive testing, the R305 sensor has been found incompatible with this system.
+
+# What Does "Works Over Network" Mean?
+The term "works over network" denotes that the fingerprint sensors, when integrated with our firmware, have been extensively tested to ensure compatibility and accurate fingerprint verification across networked devices. This means that fingerprints scanned on one device, for instance, comprising AS608 and ESP32, can be reliably matched with those scanned on another device, such as FPM10A or AS608.
 
 ## Key Features
 
@@ -18,7 +22,7 @@ The Networked Fingerprint Scanner offers a comprehensive solution for efficient 
 
 ## How It Works
 
-Our system operates by integrating multiple fingerprint sensors into a networked environment. By installing our proprietary firmware and configuring each sensor to connect to a Wi-Fi network using the ESP32's wireless capabilities, users can establish a seamless network of fingerprint scanners. These scanners communicate with a central PC software, developed using C# .NET, which serves as the hub for storing fingerprint data and facilitating real-time verification.
+Our system operates by integrating multiple fingerprint sensors into a networked environment. By installing our proprietary firmware and configuring each sensor to connect to a Wi-Fi network using the ESP32's wireless capabilities, users can establish a seamless network of fingerprint scanners. These scanners communicate with our free open-source Central PC software, developed using C# .NET, which serves as the hub for storing fingerprint data and facilitating real-time verification.
 
 ## Installation Steps
 
@@ -26,8 +30,12 @@ Our system operates by integrating multiple fingerprint sensors into a networked
 
 2. **Initial Setup**:
    - Power on the scanner for the first time. It will start in ACCESS POINT mode, displaying "Network setup attempt" on the OLED.
-   - Connect to the scanner's Wi-Fi using your PC and access the web interface to set up the Wi-Fi SSID and password for your router.
-   - Save the new network configuration.
+   Connect to the scanner's Wi-Fi using your PC. The Wi-Fi network details are as follows:
+   SSID: C-Ray Foundation
+   Password: password
+   IP Address: 192.168.4.1
+   Access the web interface to set up the Wi-Fi SSID and password for your router.
+   Save the new network configuration.
 
 3. **Connect to Wi-Fi**: Wait for the ESP32 fingerprint scanner to restart, automatically connecting to your Wi-Fi network. The OLED will display the scanner's new IP address upon successful connection.
 
