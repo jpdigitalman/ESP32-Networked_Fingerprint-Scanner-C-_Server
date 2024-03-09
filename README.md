@@ -2,21 +2,25 @@
 
 # Networked Fingerprint Scanner with Arduino for AS608 and FPM10A fingerprint sensors.
 
-The Networked Fingerprint Scanner offers a comprehensive solution for efficient fingerprint enrollment and verification, eliminating the hassle of duplicate fingerprint entries and enabling seamless integration and verification across multiple fingerprint scanner devices. This innovative system supports a range of fingerprint sensors, including AS608 and FPM10A, providing extensive compatibility over network connections.
-Our solution has been meticulously tested and proven effective with supported sensors such as AS608 and FPM10A. It should be noted that, following extensive testing, the R305 sensor has been found incompatible with this system.
+The Networked Fingerprint Scanner provides solution for fast fingerprint enrollment and verification. It eliminates the issue of duplicate fingerprint entries and enable seamless integration and verification across multiple fingerprint scanner devices. This innovative system has been tested to support a range of fingerprint sensor modules, including AS608 and FPM10A, providing extensive compatibility over network connections.
+Following extensive testing, the R305 sensor has been found incompatible with this system.
 
-# What Does "Works Over Network" Mean?
-The term "works over network" denotes that the fingerprint sensors, when integrated with our firmware, have been extensively tested to ensure compatibility and accurate fingerprint verification across networked devices. This means that fingerprints scanned on one device, for instance, comprising AS608 and ESP32, can be reliably matched with those scanned on another device, such as FPM10A or AS608.
+# Fingerprint Verification accross different Modules over Wifi Network
+The fingerprint sensors, when integrated with our firmware, have been extensively tested to ensure compatibility and accurate fingerprint verification across networked devices. This means that fingerprints scanned on one device, for instance, comprising AS608 and ESP32, can be reliably matched with those scanned on another device, such as FPM10A or AS608. 
+This is achieved with ESP32 wifi connected to a local network. The ESP32 communicates with C#-based central Server that stores fingerprint database.
 
-## Key Features
+## Key Features of the sample firmware
 
-- **Elimination of Duplicate Enrollment**: Say goodbye to redundant entries with our system's advanced fingerprint matching capabilities, ensuring each fingerprint is uniquely identified across all connected devices.
+- **Elimination of Duplicate Enrollment**: Prevention of redundant fingerprint entries with inbuilt fingerprint matching capabilities, ensuring each fingerprint is uniquely identified across all connected devices. The fingerprint matching uses the modules inbuilt matching capability to ensure consistent and reliable fingerprint identification.
 
-- **Unlimited Fingerprint Storage**: With support for an unlimited number of fingerprints, our networked scanner allows for extensive user enrollment without any storage constraints.
+- **Unlimited Fingerprint Storage**: With support for an unlimited number of fingerprints, our networked scanner allows for extensive user enrollment without any storage constraints. 
 
 - **Seamless Integration**: Tested compatibility with various fingerprint sensors, such as AS608 and FPM10A, ensures smooth operation and reliable performance over network connections.
 
-- **Real-time Verification**: Experience instant fingerprint verification across networked devices, enabling swift access control and enhanced security measures.
+- **Real-time Verification**: Experience fast fingerprint verification across networked devices, enabling swift access control and enhanced security measures.
+Note: The more fingerprint is stored in the remote server, the more time it takes to verify the fingerprint during enrollment. 
+Test shows that 1000 fingerprints takes about 30 seconds to verify.
+The benefit is that the fingerprint verification is not limited to a single machine.
 
 - **Automatic Enrollment**: New fingerprints are automatically enrolled and saved in the database, streamlining the enrollment process for added convenience.
 
