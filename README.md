@@ -26,14 +26,14 @@ The benefit is that the fingerprint verification is not limited to a single mach
 
 ## How It Works
 
-Our system operates by integrating multiple fingerprint sensors into a networked environment. By installing our proprietary firmware and configuring each sensor to connect to a Wi-Fi network using the ESP32's wireless capabilities, users can establish a seamless network of fingerprint scanners. These scanners communicate with our free open-source Central PC software, developed using C# .NET, which serves as the hub for storing fingerprint data and facilitating real-time verification.
+Our system operates by integrating multiple fingerprint sensors into a networked environment. By installing our proprietary sample firmware and configuring each sensor to connect to a Wi-Fi network using the ESP32's wireless capabilities, users can establish a seamless network of fingerprint scanners. These scanners communicate with our free open-source Central PC software, developed using C# .NET, which serves as the hub for storing fingerprint data in a transparent json database format and facilitating real-time verification.
 
 # PC Software (Open Source)
-To enable network verification, the fingerprint scanners communicate with PC software developed using C# .NET, which is licensed under the MIT License. This software stores fingerprint data in a database on the PC. Upon fingerprint input, the system checks the database to ensure uniqueness. If the fingerprint is not already stored, it's enrolled and saved in the database.
+To enable network verification, the fingerprint scanners communicate with PC software developed using C# .NET, which is licensed under the MIT License. This software stores fingerprint data in a database on the PC. Upon fingerprint input, the fingerprint module checks the each database to ensure uniqueness. If the fingerprint is not already stored, it's enrolled and saved in the database.
 
 ## Installation Steps
 
-1. **Install Firmware**: Flash the provided firmware onto the ESP32 using the ESP flashing tool or a suitable method for flashing a bin file.
+1. **Install Firmware**: Flash the provided firmware onto the ESP32 using the ESP flashing tool or a suitable method for flashing a (.bin) file.
 
 2. **Initial Setup**:
    - Power on the scanner for the first time. It will start in ACCESS POINT mode, displaying "Network setup attempt" on the OLED.
@@ -59,8 +59,8 @@ For access to the full code of the firmware, users can request it directly. Plea
 
 ## License Agreement
 
-The Open source PC software component of this system is licensed under the MIT License. For access to the full firmware code or other components not explicitly open-sourced, please reach out for further information.
+The Open source PC software component of this system is Free and licensed under the MIT License. For access to the full firmware code or other components not explicitly open-sourced, please reach out for further information.
 
 The Networked Fingerprint Scanner firmware is provided under a proprietary license agreement. 
-
-For inquiries regarding licensing or access to the firmware code, please contact [].
+The ESP32 runs Arduino code.
+For inquiries regarding licensing or access to the firmware code, please contact me.
