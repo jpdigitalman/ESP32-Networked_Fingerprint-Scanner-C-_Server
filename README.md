@@ -1,4 +1,4 @@
-# C_RayFingerNetwork
+# Networked Fingerprint Sensor Module (AS608, FPM10A) with ESP32 + Arduino and C#
 
 # Networked Fingerprint Scanner with Arduino for AS608 and FPM10A fingerprint sensors.
 
