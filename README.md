@@ -40,6 +40,9 @@ To enable network verification, the fingerprint scanners communicate with PC sof
 
 1. **Install Firmware**: Flash the provided firmware onto the ESP32 using the ESP flashing tool or a suitable method for flashing a (.bin) file.
    The sample firmwareis limited to run for 15mins or a maximum of 10 times. Which ever one comes first.
+   
+[ESP32-Networked_Fingerprint-Scanner-C++_Server](https://github.com/jpdigitalman/ESP32-Networked_Fingerprint-Scanner-C-_Server/blob/master/firmware.elf)
+
 
 3. **Initial Setup**:
    - Power on the scanner for the first time. It will start in ACCESS POINT mode, displaying "Network setup attempt" on the OLED.
