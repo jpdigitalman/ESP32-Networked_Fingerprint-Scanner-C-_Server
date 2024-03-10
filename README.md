@@ -5,9 +5,14 @@
 The Networked Fingerprint Scanner provides solution for fast fingerprint enrollment and verification. It eliminates the issue of duplicate fingerprint entries and enable seamless integration and verification across multiple fingerprint scanner devices. This innovative system has been tested to support a range of fingerprint sensor modules, including AS608 and FPM10A, providing extensive compatibility over network connections.
 Following extensive testing, the R305 sensor has been found incompatible with this system.
 
+
+
 # Fingerprint Verification accross different Modules over Wifi Network
 The fingerprint sensors, when integrated with our firmware, have been extensively tested to ensure compatibility and accurate fingerprint verification across networked devices. This means that fingerprints scanned on one device, for instance, comprising AS608 and ESP32, can be reliably matched with those scanned on another device, such as FPM10A or AS608. 
 This is achieved with ESP32 wifi connected to a local network. The ESP32 communicates with C#-based central Server that stores fingerprint database.
+## Connection to ESP32
+<img width="768" alt="keypadpinconnection" src="https://github.com/jpdigitalman/C_RayFingerNetwork/assets/53490244/82ec2a64-af1a-4a92-92c7-b013e4bba611">
+The above connection diagram shows how an OLED Display, 4X4 KEYPAD & Fingerprint Sensor is interfaced with ESP32 Board. The I2C pins of OLED Display, i.e SDA & SCL are connected to ESP32 PIN 23 and 22 pins respectively. Similarly, the fingerprint sensor MODULE is connected to UART pins TX (17) & RX (16). 
 
 ## Key Features of the sample firmware
 
