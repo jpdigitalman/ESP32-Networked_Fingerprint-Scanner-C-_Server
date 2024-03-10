@@ -34,8 +34,9 @@ To enable network verification, the fingerprint scanners communicate with PC sof
 ## Installation Steps
 
 1. **Install Firmware**: Flash the provided firmware onto the ESP32 using the ESP flashing tool or a suitable method for flashing a (.bin) file.
+   The sample firmwareis limited to run for 15mins or a maximum of 10 times. Which ever one comes first.
 
-2. **Initial Setup**:
+3. **Initial Setup**:
    - Power on the scanner for the first time. It will start in ACCESS POINT mode, displaying "Network setup attempt" on the OLED.
    Connect to the scanner's Wi-Fi using your PC. The Wi-Fi network details are as follows:
    SSID: C-Ray Foundation
@@ -44,16 +45,16 @@ To enable network verification, the fingerprint scanners communicate with PC sof
    Access the web interface to set up the Wi-Fi SSID and password for your router.
    Save the new network configuration.
 
-3. **Connect to Wi-Fi**: Wait for the ESP32 fingerprint scanner to restart, automatically connecting to your Wi-Fi network. The OLED will display the scanner's new IP address upon successful connection.
+4. **Connect to Wi-Fi**: Wait for the ESP32 fingerprint scanner to restart, automatically connecting to your Wi-Fi network. The OLED will display the scanner's new IP address upon successful connection.
 
-4. **Install PC Software**: Compile the provided open-source C# code and run the PC software. It will display a user interface where you can input the scanner's IP address.
+5. **Install PC Software**: Compile the provided open-source C# code and run the PC software. It will display a user interface where you can input the scanner's IP address.
 
-5. **Configure Windows Firewall**:
+6. **Configure Windows Firewall**:
    - Add Port 3000 to TCP for both inbound and outbound rules in Windows Defender and Advanced Security. This allows communication between the PC software and ESP32.
 
-6. **Submit Server IP Address**: Enter the IP address in the PC software's web address input and navigate to the server IP page. Click "submit" to save the server IP address in the ESP32 scanner's non-volatile memory.
+7. **Submit Server IP Address**: Enter the IP address in the PC software's web address input and navigate to the server IP page. Click "submit" to save the server IP address in the ESP32 scanner's non-volatile memory.
 
-7. **Final Setup**: The ESP32 scanner will restart and automatically connect to the server. Now, the scanner is ready for fingerprint enrollment and verification.
+8. **Final Setup**: The ESP32 scanner will restart and automatically connect to the server. Now, the scanner is ready for fingerprint enrollment and verification.
 
 For access to the full code of the firmware, users can request it directly. Please note that the firmware code is not open source. However, the PC software written in C# is open source and available for customization.
 
